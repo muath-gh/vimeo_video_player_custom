@@ -178,7 +178,7 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
 
   void _videoPlayer() {
     /// getting the vimeo video configuration from api and setting managers
-    _getVimeoVideoConfigFromUrl(widget.url).then((value) async {
+    _getVimeoVideoConfigFromVimeoId(widget.vimeoId).then((value) async {
       vimeoProgressiveList = value?.play?.progressive ?? [];
       vimeoProgressiveList.sort((a, b) => (a?.qualityInt ?? 0).compareTo((b?.qualityInt ?? 0)));
       String vimeoMp4Video = '';
@@ -248,29 +248,20 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
   }
 
   /// used to get valid vimeo video configuration
-  Future<VimeoModel?> _getVimeoVideoConfigFromUrl(
-    String url, {
+  Future<VimeoModel?> _getVimeoVideoConfigFromVimeoId(
+    String vimeoId, {
     bool trimWhitespaces = true,
   }) async {
-    if (trimWhitespaces) url = url.trim();
+ 
 
     /// here i'm converting the vimeo video id only and calling config api for vimeo video .mp4
     /// supports this types of urls
     /// https://vimeo.com/70591644 => 70591644
     /// www.vimeo.com/70591644 => 70591644
     /// vimeo.com/70591644 => 70591644
-    var vimeoVideoId = '';
-    var videoIdGroup = 4;
-    for (var exp in [
-      RegExp(r"^((https?)://)?(www.)?vimeo\.com/(\d+).*$"),
-    ]) {
-      RegExpMatch? match = exp.firstMatch(url);
-      if (match != null && match.groupCount >= 1) {
-        vimeoVideoId = match.group(videoIdGroup) ?? '';
-      }
-    }
+   
 
-    final response = await _getVimeoVideoConfig(vimeoVideoId: vimeoVideoId);
+    final response = await _getVimeoVideoConfig(vimeoVideoId: vimeoId);
     return (response != null) ? response : null;
   }
 
