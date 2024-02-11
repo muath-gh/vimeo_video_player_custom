@@ -12,6 +12,7 @@ class VimeoVideoPlayer extends StatefulWidget {
   /// vimeo video url
   final String url;
 
+final String vimeoId;
   /// access token
   final String accessToken;
 
@@ -41,6 +42,7 @@ class VimeoVideoPlayer extends StatefulWidget {
 
   const VimeoVideoPlayer({
     required this.url,
+    required this.vimeoId,
     required this.accessToken,
     this.systemUiOverlay = const [
       SystemUiOverlay.top,
