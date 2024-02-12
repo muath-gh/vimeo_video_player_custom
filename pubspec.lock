@@ -81,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
+  fijkplayer:
+    dependency: "direct main"
+    description:
+      name: fijkplayer
+      sha256: "32e7c827c24f626e8d0a662212363d5a6387d89ec6138aca7d754ba87b09668f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.10.1"
   flick_video_player_custom:
     dependency: "direct main"
     description:

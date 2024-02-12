@@ -19,6 +19,7 @@ dependencies:
   video_player: ^2.6.1
   flick_video_player_custom: ^0.5.7
   collection: ^1.16.0
+  fijkplayer: ^0.10.0
 
 dev_dependencies:
   flutter_test:

@@ -42,23 +42,13 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             VimeoVideoPlayer(
-              vimeoId: "70591644",
-              url: 'https://vimeo.com/70591644',
+              vimeoId: "836787870",
+              url: 'https://vimeo.com/911814709',
               onFinished: () => onFinishedVimeo(),
-              accessToken: '',
+              accessToken: '2a7dc80881ebe70585d628e3c9d6f424',
             ),
-            VimeoVideoPlayer(
-              vimeoId: "70591644",
-              url: 'https://vimeo.com/740663286',
-              onFinished: () => onFinishedVimeo(),
-              accessToken: '',
-            ),
-            VimeoVideoPlayer(
-              vimeoId: "70591644",
-              url: 'https://vimeo.com/850092726',
-              onFinished: () => onFinishedVimeo(),
-              accessToken: '',
-            ),
+           
+            
           ],
         ),
       ),

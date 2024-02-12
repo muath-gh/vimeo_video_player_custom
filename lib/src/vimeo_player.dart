@@ -179,7 +179,9 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
   void _videoPlayer() {
     /// getting the vimeo video configuration from api and setting managers
     _getVimeoVideoConfigFromVimeoId(widget.vimeoId).then((value) async {
+    
       vimeoProgressiveList = value?.play?.progressive ?? [];
+    
       vimeoProgressiveList.sort((a, b) => (a?.qualityInt ?? 0).compareTo((b?.qualityInt ?? 0)));
       String vimeoMp4Video = '';
 
@@ -194,13 +196,17 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
         }
       }
 
+      
+   
+
       _videoPlayerController = VideoPlayerController.network(vimeoMp4Video);
+
 
       _setVideoInitialPosition();
       _setVideoListeners();
 
       _flickManager = FlickManager(
-          videoPlayerController: _videoPlayerController ?? _emptyVideoPlayerController,
+          videoPlayerController: _videoPlayerController! ,
           autoPlay: widget.autoPlay,
           additionalOptions: [OptionModel(name: 'Quality', icon: Icons.hd_outlined, onPressFeature: () => _onPressQualityOption())])
         ..registerContext(context);
@@ -262,6 +268,7 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
    
 
     final response = await _getVimeoVideoConfig(vimeoVideoId: vimeoId);
+    print('response is ${response}');
     return (response != null) ? response : null;
   }
 
@@ -270,7 +277,7 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
     required String vimeoVideoId,
   }) async {
     try {
-      Response responseData = await Dio().get('https://api.vimeo.com/videos/$vimeoVideoId?fields=play.progressive',
+      Response responseData = await Dio().get('https://api.vimeo.com/videos/$vimeoVideoId',
           options: Options(
             headers: {
               'Authorization': 'bearer ${widget.accessToken}',
@@ -279,11 +286,15 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
             sendTimeout: const Duration(milliseconds: 30000),
           ));
       var vimeoVideo = VimeoModel.fromJson(responseData.data);
+      print("vimeo model ${vimeoVideo}");
       return vimeoVideo;
     } on DioException catch (e) {
+      print('error 1');
+      print(e);
       log('Dio Error : ', name: e.error.toString());
       return null;
     } on Exception catch (e) {
+       print('error 2');
       log('Error : ', name: e.toString());
       return null;
     }
