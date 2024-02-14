@@ -1,13 +1,13 @@
 class ProgressiveModel {
   String? type;
   String? codec;
-  int? width;
-  int? height;
+  double? width;
+  double? height;
   String? linkExpirationTime;
   String? link;
   String? createdTime;
   double? fps;
-  int? size;
+  double? size;
   String? md5;
   String? rendition;
   int? qualityInt;
