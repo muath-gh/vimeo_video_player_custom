@@ -2,7 +2,7 @@ class ProgressiveModel {
   String? type;
   String? codec;
   int? width;
-  double? height;
+  int? height;
   String? linkExpirationTime;
   String? link;
   String? createdTime;
