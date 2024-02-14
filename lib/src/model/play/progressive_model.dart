@@ -7,7 +7,7 @@ class ProgressiveModel {
   String? link;
   String? createdTime;
   int? fps;
-  double? size;
+  int? size;
   String? md5;
   String? rendition;
   int? qualityInt;
