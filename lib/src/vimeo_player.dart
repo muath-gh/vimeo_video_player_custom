@@ -103,7 +103,7 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
 
     /// checking that vimeo url is valid or not
     if (_isVimeoVideo) {
-      _videoPlayer();
+      videoPlayer(widget.vimeoId);
     }
   }
 
@@ -176,9 +176,9 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
     }
   }
 
-  void _videoPlayer() {
+  void videoPlayer(String vimeoVideoId) {
     /// getting the vimeo video configuration from api and setting managers
-    _getVimeoVideoConfigFromVimeoId(widget.vimeoId).then((value) async {
+    _getVimeoVideoConfigFromVimeoId(vimeoVideoId).then((value) async {
     
       vimeoProgressiveList = value?.play?.progressive ?? [];
     

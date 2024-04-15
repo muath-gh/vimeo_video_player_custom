@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vimeo_video_player_custom/vimeo_video_player_custom.dart';
 import 'package:vimeo_player_flutter/vimeo_player_flutter.dart';
-
+import 'package:video_player/video_player.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -31,6 +31,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late VideoPlayerController vimeoVideoPlayerController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    vimeoVideoPlayerController = VideoPlayerController.network('');
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
            
-           
+          
             
           ],
         ),
