@@ -209,6 +209,8 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
         }
       }
 
+print(vimeoMp4Video);
+ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(vimeoMp4Video),));
       _videoPlayerController = VideoPlayerController.network(vimeoMp4Video);
 
       _setVideoInitialPosition();
