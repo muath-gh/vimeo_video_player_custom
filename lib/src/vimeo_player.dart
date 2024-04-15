@@ -108,6 +108,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
       if (_videoPlayerController != null) {
         dispose();
       }
+      
       videoPlayer(widget.vimeoId);
     }
   }
@@ -186,6 +187,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
   }
 
   void videoPlayer(String vimeoVideoId) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(vimeoVideoId)));
     /// getting the vimeo video configuration from api and setting managers
     _getVimeoVideoConfigFromVimeoId(vimeoVideoId).then((value) async {
       vimeoProgressiveList = value?.play?.progressive ?? [];
@@ -209,8 +211,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
         }
       }
 
-print(vimeoMp4Video);
-ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(vimeoMp4Video),));
+
       _videoPlayerController = VideoPlayerController.network(vimeoMp4Video);
 
       _setVideoInitialPosition();
