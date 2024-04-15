@@ -63,10 +63,10 @@ final String vimeoId;
   }) : super(key: key);
 
   @override
-  State<VimeoVideoPlayer> createState() => _VimeoVideoPlayerState();
+  State<VimeoVideoPlayer> createState() => VimeoVideoPlayerState();
 }
 
-class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
+class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
   /// video player controller
   VideoPlayerController? _videoPlayerController;
 
@@ -317,7 +317,7 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
 }
 
 // ignore: library_private_types_in_public_api
-extension ShowAlertDialog on _VimeoVideoPlayerState {
+extension ShowAlertDialog on VimeoVideoPlayerState {
   showAlertDialog(BuildContext context) {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
