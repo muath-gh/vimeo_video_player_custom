@@ -105,10 +105,6 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
 
     /// checking that vimeo url is valid or not
     if (_isVimeoVideo) {
-      if (_videoPlayerController != null) {
-        dispose();
-      }
-      
       videoPlayer(widget.vimeoId);
     }
   }
@@ -187,49 +183,49 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
   }
 
   void videoPlayer(String vimeoVideoId) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(vimeoVideoId)));
-    /// getting the vimeo video configuration from api and setting managers
-    _getVimeoVideoConfigFromVimeoId(vimeoVideoId).then((value) async {
-      vimeoProgressiveList = value?.play?.progressive ?? [];
+    if (vimeoVideoId.isNotEmpty) {
+      /// getting the vimeo video configuration from api and setting managers
+      _getVimeoVideoConfigFromVimeoId(vimeoVideoId).then((value) async {
+        vimeoProgressiveList = value?.play?.progressive ?? [];
 
-      vimeoProgressiveList
-          .sort((a, b) => (a?.qualityInt ?? 0).compareTo((b?.qualityInt ?? 0)));
-      String vimeoMp4Video = '';
+        vimeoProgressiveList.sort(
+            (a, b) => (a?.qualityInt ?? 0).compareTo((b?.qualityInt ?? 0)));
+        String vimeoMp4Video = '';
 
-      if (vimeoProgressiveList.isNotEmpty) {
-        String? video720 = vimeoProgressiveList
-            .singleWhereOrNull((element) => element?.qualityInt == 720)
-            ?.link;
-        vimeoProgressiveSelected = video720 != null
-            ? vimeoProgressiveList
-                .singleWhereOrNull((element) => element?.qualityInt == 720)
-            : vimeoProgressiveList.last;
+        if (vimeoProgressiveList.isNotEmpty) {
+          String? video720 = vimeoProgressiveList
+              .singleWhereOrNull((element) => element?.qualityInt == 720)
+              ?.link;
+          vimeoProgressiveSelected = video720 != null
+              ? vimeoProgressiveList
+                  .singleWhereOrNull((element) => element?.qualityInt == 720)
+              : vimeoProgressiveList.last;
 
-        vimeoMp4Video = video720 ?? (vimeoProgressiveList.last?.link ?? '');
-        if (vimeoMp4Video.isEmpty || vimeoMp4Video == '') {
-          showAlertDialog(context);
+          vimeoMp4Video = video720 ?? (vimeoProgressiveList.last?.link ?? '');
+          if (vimeoMp4Video.isEmpty || vimeoMp4Video == '') {
+            showAlertDialog(context);
+          }
         }
-      }
 
+        _videoPlayerController = VideoPlayerController.network(vimeoMp4Video);
 
-      _videoPlayerController = VideoPlayerController.network(vimeoMp4Video);
+        _setVideoInitialPosition();
+        _setVideoListeners();
 
-      _setVideoInitialPosition();
-      _setVideoListeners();
+        _flickManager = FlickManager(
+            videoPlayerController: _videoPlayerController!,
+            autoPlay: widget.autoPlay,
+            additionalOptions: [
+              OptionModel(
+                  name: 'Quality',
+                  icon: Icons.hd_outlined,
+                  onPressFeature: () => _onPressQualityOption())
+            ])
+          ..registerContext(context);
 
-      _flickManager = FlickManager(
-          videoPlayerController: _videoPlayerController!,
-          autoPlay: widget.autoPlay,
-          additionalOptions: [
-            OptionModel(
-                name: 'Quality',
-                icon: Icons.hd_outlined,
-                onPressFeature: () => _onPressQualityOption())
-          ])
-        ..registerContext(context);
-
-      isVimeoVideoLoaded.value = !isVimeoVideoLoaded.value;
-    });
+        isVimeoVideoLoaded.value = !isVimeoVideoLoaded.value;
+      });
+    }
   }
 
   @override
