@@ -104,10 +104,10 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
     super.initState();
 
     /// checking that vimeo url is valid or not
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(_isVimeoVideo.toString())));
-    if (_isVimeoVideo) {
-      videoPlayer(widget.vimeoId);
-    }
+    // if (_isVimeoVideo) {
+      
+    // }
+    videoPlayer(widget.vimeoId);
     
   }
 
