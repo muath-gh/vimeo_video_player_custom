@@ -185,7 +185,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
   }
 
   void videoPlayer(String vimeoVideoId) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(vimeoVideoId)));
+   print('ssssssssssssssssssssssssssssssssssssssssssssssss ${vimeoVideoId}');
     if (vimeoVideoId.isNotEmpty) {
       /// getting the vimeo video configuration from api and setting managers
       _getVimeoVideoConfigFromVimeoId(vimeoVideoId).then((value) async {
