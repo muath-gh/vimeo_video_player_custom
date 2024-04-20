@@ -185,7 +185,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
   }
 
   void videoPlayer(String vimeoVideoId) {
-   print('ssssssssssssssssssssssssssssssssssssssssssssssss ${vimeoVideoId}');
+  
     if (vimeoVideoId.isNotEmpty) {
       /// getting the vimeo video configuration from api and setting managers
       _getVimeoVideoConfigFromVimeoId(vimeoVideoId).then((value) async {
@@ -209,7 +209,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
             showAlertDialog(context);
           }
         }
-
+ print('ssssssssssssssssssssssssssssssssssssssssssssssss ${vimeoMp4Video}');
         _videoPlayerController = VideoPlayerController.network(vimeoMp4Video);
 
         _setVideoInitialPosition();
