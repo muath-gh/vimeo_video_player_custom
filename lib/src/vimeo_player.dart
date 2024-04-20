@@ -105,10 +105,9 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
 
     /// checking that vimeo url is valid or not
     // if (_isVimeoVideo) {
-      
+
     // }
-    videoPlayer(widget.vimeoId,false);
-    
+    videoPlayer(widget.vimeoId, false);
   }
 
   @override
@@ -184,8 +183,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
     }
   }
 
-  void videoPlayer(String vimeoVideoId,bool firstVideo) {
-  
+  void videoPlayer(String vimeoVideoId, bool firstVideo) {
     if (vimeoVideoId.isNotEmpty) {
       /// getting the vimeo video configuration from api and setting managers
       _getVimeoVideoConfigFromVimeoId(vimeoVideoId).then((value) async {
@@ -209,7 +207,19 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
             showAlertDialog(context);
           }
         }
- print('ssssssssssssssssssssssssssssssssssssssssssssssss ${vimeoMp4Video}');
+
+        if (!firstVideo) {
+          VideoPlayerController? _old = _videoPlayerController;
+          if (mounted) {
+            setState(() {
+              _videoPlayerController!.pause();
+              _videoPlayerController = null;
+            });
+          }
+          Future.delayed(const Duration(seconds: 1), () {
+            if (_old != null) _old.dispose();
+          });
+        }
         _videoPlayerController = VideoPlayerController.network(vimeoMp4Video);
 
         _setVideoInitialPosition();
