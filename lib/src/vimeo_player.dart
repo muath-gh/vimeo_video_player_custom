@@ -237,6 +237,8 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
           ..registerContext(context);
 
         isVimeoVideoLoaded.value = !isVimeoVideoLoaded.value;
+        print('isVimeoVideoLoaded');
+        print(isVimeoVideoLoaded.value);
       });
     }
   }
