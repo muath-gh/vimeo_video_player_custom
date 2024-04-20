@@ -209,6 +209,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
         }
 
         if (!firstVideo) {
+          isVimeoVideoLoaded.value = false;
           VideoPlayerController? _old = _videoPlayerController;
           if (mounted) {
             setState(() {
