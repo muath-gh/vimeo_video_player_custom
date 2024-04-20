@@ -297,7 +297,8 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
     /// vimeo.com/70591644 => 70591644
 
     final response = await _getVimeoVideoConfig(vimeoVideoId: vimeoId);
-    print('response is ${response}');
+   
+   
     return (response != null) ? response : null;
   }
 
@@ -316,15 +317,16 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
                 sendTimeout: const Duration(milliseconds: 30000),
               ));
       var vimeoVideo = VimeoModel.fromJson(responseData.data);
-      print("vimeo model ${vimeoVideo}");
+      print('ssssssssssssssssssssssssssssssssssssssss');
+      print(vimeoVideo.play!.progressive!.first.link);
+  
       return vimeoVideo;
     } on DioException catch (e) {
-      print('error 1');
-      print(e);
+
       log('Dio Error : ', name: e.error.toString());
       return null;
     } on Exception catch (e) {
-      print('error 2');
+     
       log('Error : ', name: e.toString());
       return null;
     }
