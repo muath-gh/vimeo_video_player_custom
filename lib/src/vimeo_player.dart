@@ -107,7 +107,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
     // if (_isVimeoVideo) {
       
     // }
-    videoPlayer(widget.vimeoId);
+    videoPlayer(widget.vimeoId,false);
     
   }
 
@@ -184,7 +184,7 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
     }
   }
 
-  void videoPlayer(String vimeoVideoId) {
+  void videoPlayer(String vimeoVideoId,bool firstVideo) {
   
     if (vimeoVideoId.isNotEmpty) {
       /// getting the vimeo video configuration from api and setting managers
