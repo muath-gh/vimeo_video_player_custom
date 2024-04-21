@@ -1,16 +1,16 @@
 class ProgressiveModel {
   String? type;
   String? codec;
-  int? width;
-  int? height;
+  num? width;
+  num? height;
   String? linkExpirationTime;
   String? link;
   String? createdTime;
-  int? fps;
-  int? size;
+  num? fps;
+  num? size;
   String? md5;
   String? rendition;
-  int? qualityInt;
+  num? qualityInt;
 
   ProgressiveModel({
     this.type,
