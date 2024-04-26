@@ -213,8 +213,10 @@ class VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
           VideoPlayerController? _old = _videoPlayerController;
           if (mounted) {
             setState(() {
+            if(_videoPlayerController != null){
               _videoPlayerController!.pause();
               _videoPlayerController = null;
+            }
             });
           }
           Future.delayed(const Duration(seconds: 1), () {
