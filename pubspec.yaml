@@ -17,7 +17,7 @@ dependencies:
 
   dio: ^5.2.0
   video_player: ^2.6.1
-  flick_video_player_custom: ^0.5.7
+  flick_video_player_custom: ^0.5.8
   collection: ^1.16.0
   fijkplayer: ^0.10.0
 

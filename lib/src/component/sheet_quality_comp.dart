@@ -38,7 +38,7 @@ class _SheetQualityCompState extends State<SheetQualityComp> {
               ),
               Expanded(
                   child: Text(widget.vimeoProgressiveList[index]?.rendition?.toString() ?? 'null',
-                      style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                      style: Theme.of(context).textTheme.labelMedium!.copyWith(
                           color: Colors.black,
                           fontWeight: widget.vimeoProgressiveSelected?.rendition == widget.vimeoProgressiveList[index]?.rendition
                               ? FontWeight.bold
