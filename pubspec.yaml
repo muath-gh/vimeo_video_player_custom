@@ -20,6 +20,7 @@ dependencies:
   flick_video_player_custom: ^0.5.8
   collection: ^1.16.0
   fijkplayer: ^0.10.0
+  wakelock: ^0.6.0
 
 dev_dependencies:
   flutter_test:
