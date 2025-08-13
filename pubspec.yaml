@@ -19,7 +19,7 @@ dependencies:
   video_player: ^2.6.1
   flick_video_player_custom: ^0.5.7
   collection: ^1.16.0
-  fijkplayer: ^0.11.0
+ 
   wakelock: ^0.6.0
 
 dev_dependencies:
